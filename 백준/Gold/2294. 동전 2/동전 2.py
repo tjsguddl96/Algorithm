@@ -1,17 +1,18 @@
 import sys
-n,k=map(int,input().split())
+n,k=map(int,sys.stdin.readline().split())
 arr=[]
-dp=[999999]*(100000)
+dp=[999999]*(k+1)
+dp[0]=0
 for z in range(n):
     tmp=int(sys.stdin.readline())
     arr.append(tmp)
-    dp[tmp]=1
+    if tmp<=k:
+        dp[tmp]=1
 
-for i in range(1,k+1):
-    for j in range(i-1,0,-1):
-        if j<(i-j):
-            continue
-        dp[i]=min(dp[i],dp[j]+dp[i-j])
+for j in range(1,k+1):
+    for i in arr:
+        if j-i>=0:
+            dp[j]=min(dp[j],dp[j-i]+1)
 
 for i in range(1,k+1):
     if dp[i]==999999:
