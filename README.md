@@ -1,5 +1,12 @@
 # 
 # 백준 & 프로그래머스 & SWEA 문제 풀이 목록
+### 🚀 SWEA
+| 문제번호 | 링크 |
+| ----- | ----- |
+### 🚀 D3
+| 문제번호 | 링크 |
+| ----- | ----- |
+|1225. ［S／W 문제해결 기본］ 7일차 － 암호생성기|[링크](./SWEA/D3/1225.%E2%80%85%EF%BC%BBS%EF%BC%8FW%E2%80%85%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0%E2%80%85%EA%B8%B0%EB%B3%B8%EF%BC%BD%E2%80%857%EC%9D%BC%EC%B0%A8%E2%80%85%EF%BC%8D%E2%80%85%EC%95%94%ED%98%B8%EC%83%9D%EC%84%B1%EA%B8%B0/%EF%BC%BBS%EF%BC%8FW%E2%80%85%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0%E2%80%85%EA%B8%B0%EB%B3%B8%EF%BC%BD%E2%80%857%EC%9D%BC%EC%B0%A8%E2%80%85%EF%BC%8D%E2%80%85%EC%95%94%ED%98%B8%EC%83%9D%EC%84%B1%EA%B8%B0.java)|
 ## 📚 백준
 ### 🚀 Bronze
 | 문제번호 | 링크 |
