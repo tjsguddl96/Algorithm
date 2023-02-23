@@ -8,10 +8,9 @@ import java.util.Queue;
 import java.util.Set;
 import java.util.StringTokenizer;
 
-public class Main{
+public class Main {
 	static int r,c;
 	static char[][] arr;
-	static int[][] ch;
 	static int[] dx= {0,0,-1,1};
 	static int[] dy= {1,-1,0,0};
 	static Set<Character> set;
@@ -31,7 +30,7 @@ public class Main{
 			}
 		}
 		dfs(0,0,1,arr[0][0]+"");
-		//bfs();
+		
 		System.out.println(ans);
 	}
 	static class position{
@@ -71,32 +70,6 @@ public class Main{
 
 		ans=Math.max(ans, nowCnt);
 		
-	}
-	public static void bfs() {
-		Queue<position> q=new ArrayDeque<>();
-		q.offer(new position(0,0,1,arr[0][0]+""));
-		int nowCnt=0;
-		while(!q.isEmpty()) {
-
-			int nowY=q.peek().y;
-			int nowX=q.peek().x;
-			nowCnt=q.peek().cnt;
-			ans=nowCnt;
-			String nowChar=q.peek().charc;
-			System.out.println(nowChar+" "+nowCnt);
-			System.out.println(q.peek());
-			ch[nowY][nowX]=1;
-			set.add(arr[nowY][nowX]);
-			q.poll();
-			for(int i=0;i<4;i++) {
-				int nextY=nowY+dy[i];
-				int nextX=nowX+dx[i];
-				if(nextY>=0 && nextY<r && nextX>=0 && nextX<c && ch[nextY][nextX]==0 && check(arr[nextY][nextX],nowChar)) {
-					q.offer(new position(nextY,nextX,nowCnt+1,nowChar+arr[nextY][nextX]));
-					ch[nextY][nextX]=1;
-				}
-			}
-		}
 	}
 	public static boolean check(char c,String str) {
 		for(int i=0;i<str.length();i++) {
