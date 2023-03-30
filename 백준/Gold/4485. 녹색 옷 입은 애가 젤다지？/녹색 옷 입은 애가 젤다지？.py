@@ -1,25 +1,22 @@
 from collections import deque
 import sys
-input = sys.stdin.readline
+input=sys.stdin.readline
+dx=[1,-1,0,0]
+dy=[0,0,1,-1]
 MAX = sys.maxsize
-dx = [0, 1, 0, -1]
-dy = [1, 0, -1, 0]
-
-
 def bfs():
     q = deque()
+    dp[0][0]=arr[0][0]
     q.append((0, 0))
-    visit[0][0] = arr[0][0]
-    while q:
-        x, y = q.popleft()
-        for k in range(4):
-            nx = x + dx[k]
-            ny = y + dy[k]
-            if 0 <= nx < N and 0 <= ny < N:
-                if visit[nx][ny] > visit[x][y] + arr[nx][ny]:
-                    visit[nx][ny] = visit[x][y] + arr[nx][ny]
-                    q.append((nx, ny))
-
+    while (q):
+        y, x = q.popleft()
+        for i in range(4):
+            nexty = y + dy[i]
+            nextx = x + dx[i]
+            if 0 <= nexty < N and 0 <= nextx < N:
+                if dp[y][x] + arr[nexty][nextx]<dp[nexty][nextx]:
+                    dp[nexty][nextx] = dp[y][x] + arr[nexty][nextx]
+                    q.append((nexty, nextx))
 
 case = 1
 while True:
@@ -29,9 +26,8 @@ while True:
     arr = []
     for _ in range(N):
         arr.append(list(map(int, input().split())))
-    visit = [[MAX] * N for _ in range(N)]
+    dp = [[MAX] * N for _ in range(N)]
     bfs()
     print('Problem', case, end='')
-    print(":", visit[N-1][N-1])
-    case += 1
- 
+    print(":", dp[N-1][N-1])
+    case +=1
