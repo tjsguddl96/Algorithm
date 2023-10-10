@@ -1,35 +1,42 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.*;
-import java.io.*;
+
 public class Main {
     static int n,m;
-    static long[] time;
-    public static void main(String[] args) throws Exception {
-        BufferedReader bf=new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st=new StringTokenizer(bf.readLine());
-        n=Integer.parseInt(st.nextToken());
-        m=Integer.parseInt(st.nextToken());
-        time=new long[n];
+    static int[] t;
+    static long answer,left,right,mid;
+    public static void main(String[] args) throws IOException {
+        BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st=new StringTokenizer(br.readLine());
+        n=Integer.parseInt(st.nextToken()); //입국심사대
+        m=Integer.parseInt(st.nextToken()); //친구수
+
+        t=new int[n];
+
         for(int i=0;i<n;i++){
-            time[i]=Long.parseLong(bf.readLine());
+            t[i]=Integer.parseInt(br.readLine());
+            if(right<t[i]){
+                right=t[i];
+            }
         }
-        Arrays.sort(time);
-        long left=time[0];
-        long right=time[0]*m;
-        long p=0L;
-        long mid=0;
-        while(left<=right){
-            mid=(left+right)/2;
-            p=0;
-            for(int i=0;i<n;i++){
-                if(time[i]>mid){
+
+        right*=m;
+
+        while(left<=right) {
+            mid = (left + right) / 2;
+            long cnt = 0;
+            for (int i = 0; i < n; i++) {
+                cnt += (mid / t[i]);
+                if (cnt > m) {
                     break;
                 }
-                p+=(mid/time[i]);
             }
-            if(p>=m){
-                right=mid-1;
-            }else{
-                left=mid+1;
+            if (cnt >= m) {
+                right = mid-1;
+            } else {
+                left = mid + 1;
                 mid=left;
             }
         }
