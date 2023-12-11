@@ -1,88 +1,71 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Queue;
-import java.util.StringTokenizer;
+import java.io.*;
+import java.util.*;
 
 public class Main {
-	static int n,m,v;
-	static int[][] arr;
-	static int[] ch;
-	static ArrayList<Integer> ans;
-	static ArrayList<Integer> ans2;
-	
-	public static void main(String[] args) throws IOException {
-		// TODO Auto-generated method stub
-		BufferedReader bf=new BufferedReader(new InputStreamReader(System.in));
-		
-		StringTokenizer st=new StringTokenizer(bf.readLine());
-		n=Integer.parseInt(st.nextToken());
-		m=Integer.parseInt(st.nextToken());
-		v=Integer.parseInt(st.nextToken());
-		
-		
-		arr=new int[n][n];
-		ch=new int[n];
-		ans=new ArrayList<>();
-		ans2=new ArrayList<>();
-		for(int i=0;i<m;i++) {
-			StringTokenizer st1=new StringTokenizer(bf.readLine());
-			int n1=Integer.parseInt(st1.nextToken());
-			int n2=Integer.parseInt(st1.nextToken());
-			
-			arr[n1-1][n2-1]=1;
-			arr[n2-1][n1-1]=1;
-		}
-		ans2.add(v);
-		ch[v-1]=1;
-		dfs(v-1);
-		ch=new int[n];
-		bfs(v);
-		for(int i=0;i<ans2.size();i++) {
-			System.out.print(ans2.get(i)+" ");
-		}
-		System.out.println();
-		for(int i=0;i<ans.size();i++) {
-			System.out.print(ans.get(i)+" ");
-		}
-		
-		
-	}
-	public static void dfs(int now) {
-		
-		//System.out.println(now);
-		for(int i=0;i<n;i++) {
-			if(ch[i]==0 && arr[now][i]==1) {
-				ch[i]=1;
-				ans2.add(i+1);
-				dfs(i);
-			}
-		}
-		
-		
-	}
-	public static void bfs(int start) {
-		Queue<Integer> q=new ArrayDeque<>();
-		
-		q.offer(start-1);
-		ch[start-1]=1;
-		ans.add(start);
-		while(!q.isEmpty()) {
-			int now=q.poll();
-			
-			for(int i=0;i<n;i++) {
-				int next=i;
-				if(ch[i]==0 && arr[now][next]==1) {
-					q.offer(next);
-					ans.add(next+1);
-					ch[next]=1;
-					
-				}
-			}
-		}
-	}
-
+    static int N,M,V;
+    static ArrayList<Integer>[] arr;
+    static int ch1[];
+    static int ch2[];
+    static ArrayList<Integer> answerDFS=new ArrayList<>();
+    static ArrayList<Integer> answerBFS=new ArrayList<>();
+    static ArrayDeque<Integer> q=new ArrayDeque<>();
+    public static void main(String[] args) throws IOException{
+        BufferedReader bf= new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st=new StringTokenizer(bf.readLine());
+        N=Integer.parseInt(st.nextToken());
+        M=Integer.parseInt(st.nextToken());
+        V=Integer.parseInt(st.nextToken());
+        arr=new ArrayList[N+1];
+        ch1=new int[N+1];
+        ch2=new int[N+1];
+        for(int i=0;i<N+1;i++){
+            arr[i]=new ArrayList<>();
+        }
+        for(int i=0;i<M;i++){
+            st=new StringTokenizer(bf.readLine());
+            int n1=Integer.parseInt(st.nextToken());
+            int n2=Integer.parseInt(st.nextToken());
+            arr[n1].add(n2);
+            arr[n2].add(n1);
+        }
+        for(int i=0;i<N+1;i++){
+            Collections.sort(arr[i]);
+        }
+        ch1[V]=1;
+        q.add(V);
+        while(!q.isEmpty()){
+            int now=q.poll();
+            ch1[now]=1;
+            answerBFS.add(now);
+            for(int i=0;i<arr[now].size();i++){
+                int next=arr[now].get(i);
+                if(ch1[next]==0){
+                    ch1[next]=1;
+                    q.add(next);
+                }
+            }
+        }
+        dfs(V);
+        for(int i=0;i<answerDFS.size();i++){
+            System.out.print(answerDFS.get(i)+" ");
+        }
+        System.out.println();
+        for(int i=0;i<answerBFS.size();i++){
+            System.out.print(answerBFS.get(i)+" ");
+        }
+    }
+    public static void dfs(int now){
+        ch2[now]=1;
+        answerDFS.add(now);
+        if(answerDFS.size()==N){
+            return ;
+        }
+        for(int i=0;i<arr[now].size();i++){
+            int next=arr[now].get(i);
+            if(ch2[next]==0){
+                ch2[next]=1;
+                dfs(next);
+            }
+        }
+    }
 }
