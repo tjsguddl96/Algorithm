@@ -15,7 +15,7 @@ public class Main {
     }
     static int plan[];
     static trainPrice train[];
-    static int trainCnt[];
+    static long trainCnt[];
     public static void main(String[] args) throws Exception{
         BufferedReader bf= new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st=new StringTokenizer(bf.readLine());
@@ -25,12 +25,12 @@ public class Main {
 
         plan=new int[m]; //j일 째, Pj -> Pj+1로 이동
         train=new trainPrice[n-1];
-        trainCnt=new int[n-1]; //해당 철도 타는 횟수
+        trainCnt=new long[n]; //해당 철도 타는 횟수
 
 
         st=new StringTokenizer(bf.readLine());
         for(int i=0;i<m;i++){
-            plan[i]=Integer.parseInt(st.nextToken());
+            plan[i]=Integer.parseInt(st.nextToken())-1;
         }
 
         for(int i=0;i<n-1;i++){
@@ -43,33 +43,24 @@ public class Main {
             train[i]=new trainPrice(ticket,ic,card);
         }
         for(int i=0;i<m-1;i++){
-            cal(plan[i]-1,plan[i+1]-1);
+            if(plan[i]<plan[i+1]){
+                trainCnt[plan[i]]+=1;
+                trainCnt[plan[i+1]]-=1;
+            }
+            else{
+                trainCnt[plan[i+1]]+=1;
+                trainCnt[plan[i]]-=1;
+            }
         }
         long ans=0;
-        for(int i=0;i<trainCnt.length;i++){
-            long ticket=trainCnt[i]*train[i].ticket;
-            long card=(trainCnt[i]*train[i].ic)+train[i].card;
+        long sum=0;
+        for(int i=0;i<n-1;i++){
+            sum+=trainCnt[i];
+            long ticket=sum*train[i].ticket;
+            long card=(sum*train[i].ic)+train[i].card;
             ans+=Math.min(ticket,card);
         }
         System.out.println(ans);
-    }
-    public static void cal(int nowCity,int endCity){
-        if(nowCity==endCity){ //도착
-            return ;
-        }
-        //nowCity가 endCity보다 작으면 +1하면서 가면 됨 (trainCnt[nowCity] +1)
-        if(nowCity<endCity){
-            int nextCity=nowCity+1;
-            trainCnt[nowCity]+=1;
-            cal(nextCity,endCity);
-        }
-        //nowCity가 endCity보다 크면 -1하면서 가면 됨 (trainCnt[nowCity-1]+1)
-        else{
-            int nextCity=nowCity-1;
-            trainCnt[nowCity-1]+=1;
-            cal(nextCity,endCity);
-
-        }
     }
 
 }
