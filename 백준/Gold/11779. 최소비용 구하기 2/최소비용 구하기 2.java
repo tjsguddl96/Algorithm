@@ -72,7 +72,7 @@ public class Main {
                 for(int i=0;i<now.r.size();i++){
                     route.add(now.r.get(i));
                 }
-                nowD=dist[destination];
+                dist[destination]=nowD;
                 continue;
             }
             ArrayList<Integer> nowR=now.r;
