@@ -1,14 +1,17 @@
-import java.util.*;
 import java.io.*;
-
+import java.util.*;
 public class Main {
     static int N,K;
-    static class Item{
+    static class Item implements Comparable<Item>{
         int w;
         int v;
         public Item(int w,int v){
             this.w=w;
             this.v=v;
+        }
+        @Override
+        public int compareTo(Item o){
+            return this.w-o.w;
         }
     }
     static Item[] items;
@@ -19,32 +22,28 @@ public class Main {
         N=Integer.parseInt(st.nextToken());
         K=Integer.parseInt(st.nextToken());
         items=new Item[N+1];
-        dp=new int[N+1][100001];
+        dp=new int[N+1][K+1];
+        items[0]=new Item(0,0);
         for(int i=1;i<N+1;i++){
             st=new StringTokenizer(bf.readLine());
             int w=Integer.parseInt(st.nextToken());
             int v=Integer.parseInt(st.nextToken());
             items[i]=new Item(w,v);
         }
-
         for(int i=1;i<N+1;i++){
             Item now=items[i];
-            int nowV=items[i].v;
-            int nowW=items[i].w;
-            dp[i][nowW]=Math.max(nowV,dp[i][nowV]);
-            for(int j=0;j<=K;j++){
-                if(nowW+j<=K){
-                    dp[i][nowW+j]=Math.max(dp[i][nowW+j],dp[i-1][j]+nowV);
+            for(int j=1;j<K+1;j++){
+                if(j-now.w>=0) {
+                    dp[i][j] = Math.max(dp[i - 1][j], now.v + dp[i - 1][j - now.w]);
                 }
-                dp[i][j]=Math.max(dp[i][j],dp[i-1][j]);
+                else{
+                    dp[i][j]=Math.max(dp[i][j],dp[i-1][j]);
+                }
             }
         }
-        int max=0;
-        for(int i=0;i<=K;i++){
-            if(max<dp[N][i]){
-                max=dp[N][i];
-            }
-        }
-        System.out.println(max);
+        System.out.println(dp[N][K]);
+
+
+
     }
 }
