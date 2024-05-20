@@ -42,7 +42,7 @@ public class Main {
                 continue;
             }
             stack.add(nowY);
-
+            
 //            System.out.println(answer);
         }
 //        System.out.println(stack);
