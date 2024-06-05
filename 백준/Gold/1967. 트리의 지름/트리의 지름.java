@@ -1,64 +1,61 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.StringTokenizer;
+import java.util.*;
+import java.io.*;
 
 public class Main {
-	static class node{
-		int idx;
-		int w;
-		public node(int idx,int w) {
-			this.idx=idx;
-			this.w=w;
-		}
-	}
-	static int n;
-	static ArrayList<node> tree[];
-	static int[] ch;
-	static int maxIdx;
-	static int maxVal;
-	public static void main(String[] args) throws IOException{
-		BufferedReader bf=new BufferedReader(new InputStreamReader(System.in));
-		
-		n=Integer.parseInt(bf.readLine());
-		tree=new ArrayList[n+1];
-		ch=new int[n+1];
-		
-		for(int i=0;i<n+1;i++) {
-			tree[i]=new ArrayList<>();
-		}
-		for(int i=0;i<n-1;i++) {
-			StringTokenizer st=new StringTokenizer(bf.readLine());
-			int n1=Integer.parseInt(st.nextToken());
-			int n2=Integer.parseInt(st.nextToken());
-			int w=Integer.parseInt(st.nextToken());
-			tree[n1].add(new node(n2,w));
-			tree[n2].add(new node(n1,w));
-		}
-		ch[1]=1;
-		cal(1,0);
-		ch=new int[n+1];
-		ch[maxIdx]=1;
-		maxVal=0;
-		cal(maxIdx,0);
-		System.out.println(maxVal);
-		
-	}
-	public static void cal(int now,int weight) {
-		if(weight>maxVal) {
-			maxVal=weight;
-			maxIdx=now;
-		}
-		
-		for(int i=0;i<tree[now].size();i++) {
-			node next=tree[now].get(i);
-			if(ch[next.idx]==0) {
-				ch[next.idx]=1;
-				cal(next.idx,weight+next.w);
-			}
-		}
-		
-	}
+    static int N;
+    static class Node{
+        int n;
+        int d;
+        public Node(int n,int d){
+            this.n=n;
+            this.d=d;
+        }
+
+    }
+    static ArrayList<Node>[] arr;
+    static int[] ch;
+    static int maxVal;
+    static int maxIdx;
+    public static void main(String[] args) throws IOException{
+        BufferedReader bf=new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st;
+        N=Integer.parseInt(bf.readLine());
+        arr=new ArrayList[N+1];
+        ch=new int[N+1];
+        for(int i=0;i<N+1;i++){
+            arr[i]=new ArrayList<>();
+        }
+        for(int i=0;i<N-1;i++){
+            st=new StringTokenizer(bf.readLine());
+            int n1=Integer.parseInt(st.nextToken());
+            int n2=Integer.parseInt(st.nextToken());
+            int d=Integer.parseInt(st.nextToken());
+            arr[n1].add(new Node(n2,d));
+            arr[n2].add(new Node(n1,d));
+        }
+        ch[1]=1;
+        dfs(1,0);
+        ch=new int[N+1];
+        ch[maxIdx]=1;
+        maxVal=0;
+        dfs(maxIdx,0);
+        System.out.println(maxVal);
+
+    }
+    public static void dfs(int nowNode,int nowD){
+        if(nowD>maxVal){
+            maxVal=nowD;
+            maxIdx=nowNode;
+        }
+        for(int i=0;i<arr[nowNode].size();i++){
+            Node next=arr[nowNode].get(i);
+            int nextNode=next.n;
+            int nextD=next.d;
+            if(ch[nextNode]==0){
+                ch[nextNode]=1;
+                dfs(nextNode,nowD+nextD);
+            }
+        }
+    }
 
 }
