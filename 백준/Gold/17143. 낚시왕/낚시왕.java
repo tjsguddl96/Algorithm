@@ -77,20 +77,6 @@ public class Main {
                int nowS=shark.s;
                int nowD=shark.d;
                int nowZ=shark.z;
-               if(nowS==0){
-                   if(nowD==4 && nowX==C){
-                       nowD=3;
-                   }
-                   if(nowD==3 && nowX==1){
-                       nowD=4;
-                   }
-                   if(nowD==2 && nowY==1){
-                       nowD=1;
-                   }
-                   if(nowD==1 && nowY==R){
-                       nowD=2;
-                   }
-               }
 
                 for(int j=0;j<nowS;j++){
                     nowY+=dy[nowD];
