@@ -58,11 +58,7 @@ public class Main {
                     break;
                 }
             }
-            for(int i=1;i<R+1;i++){
-                for(int j=1;j<C+1;j++){
-                    map[i][j]=0;
-                }
-            }
+            map=new int[R+1][C+1];
             sharkMove();
             player++;
         }
