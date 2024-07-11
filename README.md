@@ -311,6 +311,7 @@
 | 문제번호 | 링크 |
 | ----- | ----- |
 |1786. 찾기|[링크](./%EB%B0%B1%EC%A4%80/Platinum/1786.%E2%80%85%EC%B0%BE%EA%B8%B0/README.md)|
+|2150. Strongly Connected Component|[링크](./%EB%B0%B1%EC%A4%80/Platinum/2150.%E2%80%85Strongly%E2%80%85Connected%E2%80%85Component/README.md)|
 |2887. 행성 터널|[링크](./%EB%B0%B1%EC%A4%80/Platinum/2887.%E2%80%85%ED%96%89%EC%84%B1%E2%80%85%ED%84%B0%EB%84%90/%ED%96%89%EC%84%B1%E2%80%85%ED%84%B0%EB%84%90.java)|
 ### 🚀 Silver
 | 문제번호 | 링크 |
