@@ -73,9 +73,9 @@ public class Main {
                 if(check(y,x,i)){
                     map[y][x]=i;
                     solve(y,x+1);
+                    map[y][x]=0;
                 }
             }
-            map[y][x]=0;
             return ;
         }
 
