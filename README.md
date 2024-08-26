@@ -346,6 +346,7 @@
 |9466. 텀 프로젝트|[링크](./%EB%B0%B1%EC%A4%80/Gold/9466.%E2%80%85%ED%85%80%E2%80%85%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/README.md)|
 |9470. Strahler 순서|[링크](./%EB%B0%B1%EC%A4%80/Gold/9470.%E2%80%85Strahler%E2%80%85%EC%88%9C%EC%84%9C/Strahler%E2%80%85%EC%88%9C%EC%84%9C.java)|
 |9489. 사촌|[링크](./%EB%B0%B1%EC%A4%80/Gold/9489.%E2%80%85%EC%82%AC%EC%B4%8C/%EC%82%AC%EC%B4%8C.java)|
+|9663. N－Queen|[링크](./%EB%B0%B1%EC%A4%80/Gold/9663.%E2%80%85N%EF%BC%8DQueen/N%EF%BC%8DQueen.java)|
 |9935. 문자열 폭발|[링크](./%EB%B0%B1%EC%A4%80/Gold/9935.%E2%80%85%EB%AC%B8%EC%9E%90%EC%97%B4%E2%80%85%ED%8F%AD%EB%B0%9C/README.md)|
 ### 🚀 Platinum
 | 문제번호 | 링크 |
