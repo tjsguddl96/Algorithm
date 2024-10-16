@@ -1,4 +1,5 @@
-select product_id,product_name,product_cd,category,price
-from food_product
-order by price desc
-limit 1
+-- 코드를 입력하세요
+SELECT PRODUCT_ID,PRODUCT_NAME,PRODUCT_CD,CATEGORY,PRICE
+FROM FOOD_PRODUCT
+ORDER BY PRICE DESC
+LIMIT 1;
