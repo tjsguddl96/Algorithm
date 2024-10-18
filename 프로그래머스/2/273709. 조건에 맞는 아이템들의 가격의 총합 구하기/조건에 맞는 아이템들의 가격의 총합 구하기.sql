@@ -1,4 +1,5 @@
 -- 코드를 작성해주세요
-select sum(price) as total_price
+select sum(price) TOTAL_PRICE
 from item_info
-where rarity='legend'
+group by rarity
+having rarity='LEGEND'
