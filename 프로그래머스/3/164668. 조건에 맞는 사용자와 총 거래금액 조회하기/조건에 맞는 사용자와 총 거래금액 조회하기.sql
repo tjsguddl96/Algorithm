@@ -1,16 +1,7 @@
-select u.user_id as user_id,u.nickname as nickname,sum(b.price) as total_sales
-from used_goods_board as b inner join used_goods_user as u
-    on b.writer_id=u.user_id
-group by b.writer_id,b.status
-having b.status='DONE' and sum(b.price)>=700000
-order by total_sales
-
-
-# select writer_id,price,status
-# from used_goods_board
-# order by writer_id
-
-# select writer_id,sum(price),status
-# from used_goods_board
-# group by writer_id,status
-# order by writer_id
+-- 코드를 입력하세요
+SELECT board.writer_id USER_ID,user.nickname as NICKNAME, sum(board.price) as TOTAL_SALES
+from USED_GOODS_BOARD as board join USED_GOODS_USER as user 
+    on board.writer_id=user.user_id
+group by board.writer_id,board.status
+having board.status='DONE' and total_sales>=700000
+order by total_sales asc
