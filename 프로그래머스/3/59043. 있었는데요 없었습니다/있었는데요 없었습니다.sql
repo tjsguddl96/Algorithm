@@ -1,6 +1,6 @@
-select i.animal_id as animal_id,i.name as name
-from animal_ins as i inner join animal_outs as o
-    on i.animal_id=o.animal_id
-where i.datetime>o.datetime
-order by i.datetime
-
+-- 코드를 입력하세요
+SELECT I.ANIMAL_ID AS ANIMAL_ID,I.NAME AS NAME
+FROM ANIMAL_INS AS I JOIN ANIMAL_OUTS AS O
+    ON I.ANIMAL_ID=O.ANIMAL_ID
+WHERE I.DATETIME>O.DATETIME
+ORDER BY I.DATETIME ASC;
