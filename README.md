@@ -386,6 +386,7 @@
 ### 🚀 Platinum
 | 문제번호 | 링크 |
 | ----- | ----- |
+|10999. 구간 합 구하기 2|[링크](./%EB%B0%B1%EC%A4%80/Platinum/10999.%E2%80%85%EA%B5%AC%EA%B0%84%E2%80%85%ED%95%A9%E2%80%85%EA%B5%AC%ED%95%98%EA%B8%B0%E2%80%852/%EA%B5%AC%EA%B0%84%E2%80%85%ED%95%A9%E2%80%85%EA%B5%AC%ED%95%98%EA%B8%B0%E2%80%852.java)|
 |1786. 찾기|[링크](./%EB%B0%B1%EC%A4%80/Platinum/1786.%E2%80%85%EC%B0%BE%EA%B8%B0/%EC%B0%BE%EA%B8%B0.java)|
 |2150. Strongly Connected Component|[링크](./%EB%B0%B1%EC%A4%80/Platinum/2150.%E2%80%85Strongly%E2%80%85Connected%E2%80%85Component/Strongly%E2%80%85Connected%E2%80%85Component.java)|
 |2887. 행성 터널|[링크](./%EB%B0%B1%EC%A4%80/Platinum/2887.%E2%80%85%ED%96%89%EC%84%B1%E2%80%85%ED%84%B0%EB%84%90/%ED%96%89%EC%84%B1%E2%80%85%ED%84%B0%EB%84%90.java)|
