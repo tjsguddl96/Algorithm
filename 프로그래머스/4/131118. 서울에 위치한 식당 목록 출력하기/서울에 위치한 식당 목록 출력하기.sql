@@ -1,15 +1,14 @@
-select i.rest_id as REST_ID	,i.rest_name as REST_NAME,i.food_type as FOOD_TYPE,i.favorites as FAVORITES	,i.address as ADDRESS,v.review_score as SCORE
-from rest_info as i inner join (select rest_id,round(avg(review_score),2) as review_score
-                                from rest_review
-                                group by rest_id) as v
-                    on i.rest_id=v.rest_id
-where i.address like '서울%'
-order by SCORE desc,FAVORITES desc
+# # -- 코드를 입력하세요
+SELECT r.rest_id as REST_ID,i.rest_name as REST_NAME, i.food_type as FOOD_TYPE,i.FAVORITES as FAVORITES,i.address as ADDRESS,round(avg(r.review_score),2) as SCORE
+from rest_review r inner join rest_info as i on r.rest_id=i.rest_id
+group by r.rest_id
+having i.address like '서울%'
+order by SCORE desc,FAVORITES desc;
 
-# select * 
-# from rest_info
-# where address like '서울%'
 
-# select v.rest_id as rest_id,round(avg(v.review_score),3) as review_score
-# from rest_review as v
-# group by v.rest_id
+# SELECT A.REST_ID, B.REST_NAME, B.FOOD_TYPE, B.FAVORITES, B.ADDRESS, ROUND(AVG(A.REVIEW_SCORE),2) AS SCORE
+# FROM REST_REVIEW A
+# JOIN REST_INFO B ON A.REST_ID = B.REST_ID
+# GROUP BY A.REST_ID
+# HAVING B.ADDRESS LIKE '서울%'
+# ORDER BY SCORE DESC, B.FAVORITES DESC
